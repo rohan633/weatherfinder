@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../reusable/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../reusable/header'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <div class="row text-center total-div">
+    <div class="<% if(status!=''){ %>col-md-6<%} else{ %> col-md-12 <% } %>  col-sm-12 left-side">   
+    <form name="form1" action="/weather" method="post">
+        <input type="text" placeholder="Enter City Name" name="cityname"/>
+        <button type="submit">Search</button>
+    </form>
+    
+    <p><marquee direction="left">The Only weather Site you need for all over the world</marquee></p>
+    </div>
+    <div class="col-md-6 col-sm-12 right-side">
+    <% if(status!="" && status=="200"){ %>
+        <div class="location">
+            <img src="../location-dot-solid.png"/>
+            <p class="city"><%= name %> ,</p>
+            <p class="country"><%= country %></p>
+        </div>
+        <br/>
+        <div class="success">
+            <h4>Today</h4>
+            <br/>
+            <div class="temptext">
+            <p><%= temp %>&#176;C, </p>
+            <% if(temp<"20"){ %>
+              <p>Winter</p>
+              <% } else { %>
+                <p>Summer</p>
+                <% } %>
+            </div>
+            <div class="date text-muted">
+              <p><%= date %></p>
+            </div>
+            <div class="daglo">
+               <img src="../daglo.png"/> 
+            </div>
+        </div>
+    <%} else if(status!=""){ %>
+      <div class="location">
+        <img src="../location-dot-solid.png"/>
+        <p class="city"><%= name %> ,</p>
+        <p class="country"><%= country %></p>
+    </div>
+    <br/>
+    <div class="success">
+        <h4>Today</h4>
+        <br/>
+        <div class="temptext2">
+        <p><%= temp %></p>
+        </div>
+        <div class="date text-muted">
+          <p><%= date %></p>
+        </div>
+        <div class="daglo">
+           <img src="../daglo.png"/> 
+        </div>
+    </div>
+    <% } %>  
+    </div>     
+    </div>
+  </div>
+</main>
+
+<footer>
+  <%- include('../reusable/footer'); %>
+</footer>
+
+</body>
+</html>

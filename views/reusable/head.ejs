@@ -1,0 +1,201 @@
+<meta charset="UTF-8">
+<title>Weather Finder</title>
+
+<!-- CSS (load bootstrap from a CDN) -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+  body { 
+    padding-top:50px;
+    
+    }
+    .jumbotron{
+    background: linear-gradient(295deg, rgba(110,110,110,1) 0%, rgba(0,0,251,1) 0%, rgba(0,212,255,1) 100%);
+    opacity:1; 
+    }
+    .logo{
+      font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+    .total-div{
+      display: flex;
+      /* border: 1px solid black; */
+    }
+    .left-side{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+  
+      background:url("../bg.png");
+      
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 400px;
+      /* border: 1px solid yellow; */
+      transition:all 0.8s;
+      border-radius: 0 50px;
+      box-shadow: 0px 2px 2px 0px black;
+    }
+    .left-side img{
+      width: 300px; 
+      height: 300px;
+    }
+    .left-side p{
+      font-weight: bold;
+      border-bottom: 2px solid black;
+    }
+    form{
+      position: absolute;
+      top: 120px;
+      left: 120px;
+    }
+    .right-side{
+     
+      /* border: 1px solid green; */
+      transition:all 0.8s;
+    }
+    input{
+      outline: none;
+      background: transparent;
+      color: black;
+      border:none;
+      border-bottom: 2px solid black;
+      transition:all 0.1s linear;
+      text-indent: 10px;
+      margin-right: 2px;
+    }
+    input::placeholder{
+      color:black;
+      text-indent: 10px;
+      font-weight: bolder;
+    }
+    input:focus{
+      border: 2px solid black;
+      border-radius: 50px;
+      background: transparent;    
+    }
+    button{
+      outline: none;
+      background: none;
+      color: black;
+      border: none;
+      border:2px solid black;
+      transition:all 0.3s linear;
+      border-radius: 50px;
+    }
+    button:hover{
+      background:black;
+      color: white;
+    }
+    .location{
+      margin-top:10px;
+      /* border: 2px solid black; */
+      height:100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,251,1) 10%, rgba(0,212,255,1) 100%);
+      border-radius: 0 50px;
+      box-shadow: 2px 2px 2px 0px black;;
+      color:white;
+      
+    }
+    .location img{
+      width:100px; height:70px;
+      float:left;
+      margin-left:-100px;
+    }
+    .location p{
+      margin-top: 10px;
+    }
+    .city{
+      /* margin-left: 20px; */
+      font-size: 2rem;   
+      }
+    .country{
+      margin-left: 10px;
+      font-size: 2rem;
+    }
+    .success{
+      /* margin-top:10px; */
+      /* border: 2px solid black; */
+      background:url("../bg2.png") no-repeat;
+      background-size: 100% 200px;
+      height:200px;
+      text-align: left !important;
+      
+      border-radius:50px;
+      box-shadow: 2px 2px 2px 0px black;;
+      color:black;
+      font-family:cursive;
+    }
+    .success h4{
+      position:absolute;
+      top:160px;
+      left:50px;
+      font-weight: bold;
+      font-size: 3rem;
+    }
+    .temptext{
+      position:absolute;
+      top:250px;
+      left:52px;
+      display:flex;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .temptext2{
+      position:absolute;
+      top:250px;
+      left:52px;
+      display:flex;
+      font-weight: bold;
+      font-size: 1rem;
+      color: red;
+    }
+    .daglo img{
+      position:absolute;
+      top: 151px;
+      left: 250px;
+      width: 280px;
+      height: 227px;
+      transition:all 3s ease;
+      animation: daglo-animation 4s alternate infinite;
+      /* animation-duration: 5s; */
+    }
+    @keyframes daglo-animation {
+      
+    0%  {transform: scale(0.5);}
+    100% {transform: scale(1);}
+    }
+    .date{
+      position: absolute;
+      top:290px;
+      left:52px;
+    }
+    .homepage{
+      background:url("../homebg.jpeg") no-repeat center;
+    }
+    .explore-btn{
+      border: none;
+      text-decoration: none;
+      border: 2px solid black;
+      background: transparent;
+      color: black;
+      padding:10px;
+      transition:all 0.3s linear;
+    }
+    
+    .homepage h1{
+      color: black;
+      margin-bottom: 30px;
+    }
+    .explore-btn:hover,.explore-btn:active{
+      background:black;
+      color: white;
+      border: none;
+    }
+</style>
